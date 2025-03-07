@@ -1,5 +1,34 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from . import models
+
+#get id
+def film_detail(request, id):
+    if request.method == 'GET':
+        film_id = get_object_or_404(models.Films, id=id)
+        return render(
+            request,
+            template_name='show_detail.html',
+            context={
+                'film_id': film_id,
+            }
+        )
+
+
+#list
+def films_list(request):
+    if request.method == 'GET':
+        query = models.Films.objects.all()
+        return render(
+            request,
+            template_name='show.html',
+            context={
+                'query': query,
+            }
+        )
+
+
+
 
 def emodji(request):
     if request.method == "GET":
