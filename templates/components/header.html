@@ -24,12 +24,11 @@
                         CRUD SYSTEM
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Добавить</a></li>
-                        <li><a class="dropdown-item" href="#">Удалить</a></li>
+                        <li><a class="dropdown-item" href="{% url 'create_task' %}">Добавить</a></li>
+                        <li><a class="dropdown-item" href="{% url 'task_list' %}">Все задачи</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Изменить</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ task.title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="shortcut icon"
+          href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9RaqWhNrT68sVwQFo4ZAs1VRsUZImppmaqg&s">
+    <link rel="stylesheet" href="{% static 'css/show.css' %}">
+</head>
+<body>
+
+{% include 'components/header.html' %}
+
+<div class="container mt-4">
+    <h1 class="text-center">{{ task_id.title }}</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Фильм: {{ task_id.choice_films }}</h5>
+            <p class="card-text"><strong>Статус:</strong> {{ task_id.status }}</p>
+            <p class="card-text"><small class="text-muted">Создано: {{ task_id.created_at|date:"d.m.Y H:i" }}</small></p>
+            <p class="card-text"><small class="text-muted">Обновлено: {{ task_id.updated_at|date:"d.m.Y H:i" }}</small></p>
+        </div>
+    </div>
+</div>
+
+{% include 'components/footer.html' %}
+
+</body>
+</html>

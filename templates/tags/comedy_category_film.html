@@ -2,13 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
+        .card {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-{% for i in query %}
-<div class="card">
-  <h5 class="card-header">{{ i.title }}</h5>
-</div>
-{% endfor %}
+    {% for i in query %}
+    <div class="card">
+        <h5 class="card-header">{{ i.title }}</h5>
+    </div>
+    {% endfor %}
 </body>
 </html>
