@@ -43,3 +43,7 @@ body {
         .card {
             height: auto; /* Убедитесь, что высота карточки автоматически адаптируется */
         }
+
+        .text-center-div h1{
+            color: white;
+        }

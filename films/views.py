@@ -1,6 +1,20 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from . import models
+from django.views import generic
+
+class SearchFilmView(generic.ListView):
+    template_name = 'show.html'
+    context_object_name = 'query'
+
+    def get_queryset(self):
+        return models.Films.objects.filter(title__icontains=self.request.GET.get('q'))
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['q'] = self.request.GET.get('q')
+        return context
+
 
 #get id
 def film_detail(request, id):
