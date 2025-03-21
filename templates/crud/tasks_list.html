@@ -19,6 +19,12 @@
         <h1 class="text-center">Список задач</h1>
     </div>
     <div class="list-group">
+
+        <form action="" method="GET">
+            <input type="text" type="search" placeholder="Введите чтобы найти задачу">
+        </form>
+
+
         {% for i in task %}
             <div class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                 <div>
