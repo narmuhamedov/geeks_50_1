@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Список учавствующих</h1>
+<ol>
+  {% for i in user %}
+
+  <li>
+    <p>{{ i.username }}</p>
+    <p>{{ i.age }}</p>
+    {% if i.club %}
+    <p>Этот человек пришел в клуб - {{ i.club }}</p>
+    {% else %}
+    <p>Клуб не определен</p>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ol>
+
+<form action="{% url 'users:logout' %}" method="POST">
+  {% csrf_token %}
+  <button type="submit">Выйти из аккаунта</button>
+</form>
+
+</body>
+</html>
