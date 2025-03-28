@@ -6,7 +6,7 @@ urlpatterns = [
     path('emodji/', views.emodji),
     path('text/', views.text),
     path('image/', views.image),
-    path('', views.films_list, name='films'),
+    path('', views.FilmListView.as_view(), name='films'),
     path('film_list/<int:id>/', views.film_detail),
     path('search/', views.SearchFilmView.as_view(), name='search'),
 ]

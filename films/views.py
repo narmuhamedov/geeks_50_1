@@ -2,6 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from . import models
 from django.views import generic
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
+from django.core.cache import cache
+
 
 class SearchFilmView(generic.ListView):
     template_name = 'show.html'
@@ -30,16 +34,32 @@ def film_detail(request, id):
 
 
 #list
-def films_list(request):
-    if request.method == 'GET':
-        query = models.Films.objects.all()
-        return render(
-            request,
-            template_name='show.html',
-            context={
-                'query': query,
-            }
-        )
+@method_decorator(cache_page(60*15), name='dispatch')
+class FilmListView(generic.ListView):
+    template_name = 'show.html'
+    model = models.Films
+    context_object_name = 'query'
+
+    def get_queryset(self):
+        films = cache.get('query')
+        if not films:
+            films = self.model.objects.all()
+            cache.set('query', films)
+        return films
+
+
+
+
+# def films_list(request):
+#     if request.method == 'GET':
+#         query = models.Films.objects.all()
+#         return render(
+#             request,
+#             template_name='show.html',
+#             context={
+#                 'query': query,
+#             }
+#         )
 
 
 
