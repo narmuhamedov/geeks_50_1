@@ -28,7 +28,7 @@ class ImageForm(forms.ModelForm):
             raise ValidationError(f"Ошибка обработки изображения: {e}")
 
         return image
-
+    #
 
 # Админка для фильмов
 class FilmsAdmin(admin.ModelAdmin):
