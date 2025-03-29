@@ -1,1 +1,4 @@
-".env"   # Убедимся, что .env в .gitignore
+.evn
+db.sqlite3
+.venv
+static
